@@ -145,12 +145,52 @@ void inserirElemento()
 
 void excluirElemento()
 {
-	
+	int deletar;
+	cout << "Digite o elemento que queira apagar: ";
+	cin >> deletar;
+	NO* aux = primeiro;
+	NO* ant = NULL;
+
+	while (aux != NULL && aux->valor != deletar) {
+		ant = aux;
+		aux = aux->prox;
+	}
+
+	if (aux != NULL) {
+		if (ant != NULL) {
+			ant->prox = aux->prox;
+			free(aux);
+			cout << "Elemento deletado. \n";
+		}
+		else {
+			NO* prim = primeiro;
+			primeiro = primeiro->prox;
+			free(prim);
+			cout << "Elemento deletado. \n";
+		}
+	}
+	else {
+		cout << "O elemento não foi encontrado. \n";
+	}
 }
 
 void buscarElemento()
 {
-	
+	int elemento;
+	cout << "Digite o elemento que deseja buscar: ";
+	cin >> elemento;
+	NO* aux = primeiro;
+
+	while (aux != NULL) {
+		if (aux->valor == elemento) {
+			cout << aux->valor << " encontrado \n";
+			break;
+		}
+		aux = aux->prox;
+	}
+	if (aux == NULL) {
+		cout << "O elemento não foi encontrado. \n";
+	}
 }
 
 
